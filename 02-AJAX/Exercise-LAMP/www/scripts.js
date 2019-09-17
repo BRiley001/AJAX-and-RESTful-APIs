@@ -8,7 +8,7 @@
 */
 
 "use strict";
-//hey
+//fixed?
 
 // global variables
 let selectedCity = "Tucson, AZ";
@@ -56,33 +56,25 @@ function getWeather(evt) {
 }
 
 function fillWeather() {
-   if (httpRequest.readyState === 4 &&
-      httpRequest.status === 200) {
+   if (httpRequest.readyState === 4 && httpRequest.status === 200) {
       weatherReport = JSON.parse(httpRequest.responseText);
-      var days = ["Sunday", "Monday", "Tuesday",
-         "Wednesday", "Thursday", "Friday", "Saturday"
+      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
       ];
-      var dateValue = new
-      Date(weatherReport.daily.data[0].time);
+      var dateValue = new Date(weatherReport.daily.data[0].time);
       var dayOfWeek = dateValue.getDay();
-      var rows = document.querySelectorAl("section.week table tbody tr");
+      var rows = document.querySelectorAll("section.week table tbody tr");
       document.querySelector("section.week table caption").innerHTML = selectedCity;
-   }
    for (var i = 0; i < rows.length; i++) {
-      var firstCell =
-         rows[i].getElementsByTagName("td")[0];
-      var secondCell =
-         rows[i].getElementsByTagName("td")[1];
-      var thirdCell =
-         rows[i].getElementsByTagName("td")[2];
+      var firstCell = rows[i].getElementsByTagName("td")[0];
+      var secondCell = rows[i].getElementsByTagName("td")[1];
+      var thirdCell = rows[i].getElementsByTagName("td")[2];
       firstCell.innerHTML = days[dayOfWeek];
       if (dayOfWeek + 1 === 7) {
          dayOfWeek = 0;
       } else {
          dayOfWeek++;
       }
-      var sun = Math.round((1 -
-         weatherReport.daily.data[i].cloudCover) * 100, 0)
+      var sun = Math.round((1 -weatherReport.daily.data[i].cloudCover) * 100, 0)
 
       if (sun > 90) {
          secondCell.style.color = "rgb(255,171,0)";
@@ -107,7 +99,7 @@ function fillWeather() {
       }
       secondCell.style.fontSize = "2.5em";
       thirdCell.innerHTML = sun + "%";
-   }
+   }}
    document.querySelector("section.week table caption").style.display = "block";
    document.querySelector("section.week table").style.display = "inline-block";
    document.querySelector("section.week p.credit").style.display = "block";
