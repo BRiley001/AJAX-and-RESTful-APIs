@@ -1,8 +1,8 @@
 /*  Exercise 01_11_01
 
     Whole Spectrum Energy Solutions
-    Author: 
-    Date:   
+    Author: Brenden Riley
+    Date:   9.19.19
 
     Filename: script.js
 */
